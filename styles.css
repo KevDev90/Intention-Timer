@@ -1,17 +1,84 @@
-*
-*:after
-*:before {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border: 1px red;
+  border: 1px solid red;
 }
 
-body {
+main {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
 }
 
 header {
-  justify-content: : center;
+  display: flex;
+  justify-content: space-around;
+}
+
+h2 {
+  display: inline;
+}
+
+.activity-section {
+  justify-content: center;
+  align-items: center;
+  margin-right: 45%;
+  margin-top: 5%;
+  background-color: #46424D;
+  color: #CBC9CF;
+}
+
+.past-activities {
+  margin-left: 60%;
+}
+
+.new-activities {
+  margin-left: 4%
+}
+
+.button-div {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 5%;
+}
+
+.button {
+  width: 17%;
+  height: 12%;
+  background-color: #46424D;
+  background-position: center top;
+  background-size: 13px;
+  font-size: 25%;
+}
+
+.button-img {
+  width: 10px;
+  height: 10px;
+  padding-top: 3px;
+}
+
+.study-button {
+ background-image: url("./assets/study.svg");
+ background-repeat: no-repeat;
+
+}
+
+.meditate-button {
+ background-image: url(/assets/meditate.svg);
+ background-repeat: no-repeat;
+}
+
+.exercise-button {
+ background-image: url(/assets/exercise.svg);
+ background-repeat: no-repeat;
+}
+
+.button-text{
+padding-top: 11px;
+padding-bottom: 3px;
+}
+
+.task-input {
+  margin-left: 14%;
+  width: 75%;
 }
