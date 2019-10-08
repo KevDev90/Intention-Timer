@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* border: 1px solid red; */
+  border: 1px solid red;
 }
 
 main {
@@ -82,6 +82,23 @@ padding-bottom: 3px;
   margin-left: 14%;
   width: 75%;
 }
+
+.first-prompt {
+  color: #CBC9CF;
+}
+
+.second-prompt {
+  color: #CBC9CF;
+}
+
+.start-button {
+  color: #46424D;
+  background-color: #FFF;
+  border-radius: 5px;
+}
+
+.right-section {
+  width: 40%;
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {

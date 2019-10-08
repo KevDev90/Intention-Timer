@@ -19,10 +19,19 @@ secondInput.addEventListener("keydown", function(e) {
   }
 });
 
-studyButton.addEventListener('click', );
 
-meditateButton.addEventListener('click', );
 
-exerciseButton.addEventListener('click', );
 
-startButton.addEventListener('click', );
+// studyButton.addEventListener('click', );
+//
+// meditateButton.addEventListener('click', );
+//
+// exerciseButton.addEventListener('click', );
+//
+// startButton.addEventListener('click', );
+
+
+
+// function checkForErrors() {
+//   if
+// }
