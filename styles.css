@@ -8,24 +8,44 @@
 main {
   display: flex;
   justify-content: center;
+  background-color: #2B2733;
 }
 
 header {
   display: flex;
   justify-content: space-around;
+  background-color: #46424D;
+  color: #CBC9CF;
+}
+
+h1 {
+  color: #FFF;
 }
 
 h2 {
   display: inline;
+  color: #CBC9CF;
+  background-color: #2B2733;
+}
+
+body {
+  background-color: #2B2733;
+}
+
+input {
+  background-color: #46424D;
 }
 
 .activity-section {
-  justify-content: center;
-  align-items: center;
-  margin-right: 45%;
-  margin-top: 5%;
+  margin-right:2%;
+  margin-left: 2%;
+  margin-top: 4%;
   background-color: #46424D;
   color: #CBC9CF;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  width: 60%;
 }
 
 .past-activities {
@@ -43,45 +63,64 @@ h2 {
 }
 
 .button {
-  width: 17%;
-  height: 12%;
+  width: 20%;
+  height: 80px;
   background-color: #46424D;
   background-position: center top;
-  background-size: 13px;
+  background-size: 25px;
   font-size: 25%;
-}
-
-.button-img {
-  width: 10px;
-  height: 10px;
-  padding-top: 3px;
+  padding-top: 5px;
+  border: 1px solid #FFF;
 }
 
 .study-button {
  background-image: url("./assets/study.svg");
  background-repeat: no-repeat;
-
+ background-origin: content-box;
 }
 
 .meditate-button {
- background-image: url(/assets/meditate.svg);
+ background-image: url("./assets/meditate.svg");
  background-repeat: no-repeat;
+ background-origin: content-box;
+
 }
 
 .exercise-button {
- background-image: url(/assets/exercise.svg);
+ background-image: url("./assets/exercise.svg");
  background-repeat: no-repeat;
+ background-origin: content-box;
 }
 
 .button-text{
 padding-top: 11px;
 padding-bottom: 3px;
+color: #CBC9CF;
+font-size: 18px;
 }
 
 .task-input {
   margin-left: 14%;
   width: 75%;
 }
+
+
+.first-prompt {
+  color: #CBC9CF;
+}
+
+.second-prompt {
+  color: #CBC9CF;
+}
+
+.start-button {
+  color: #46424D;
+  background-color: #FFF;
+  border-radius: 5px;
+}
+
+.right-section {
+  width: 40%;
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
@@ -95,4 +134,5 @@ input {
   background: #46424D;
   border-bottom: 1px solid #A5A3A7;
   color: #A4A0A8;
+
 }
