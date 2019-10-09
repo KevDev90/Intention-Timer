@@ -26,13 +26,14 @@ h1 {
 }
 
 h2 {
-  display: inline;
-  color: #CBC9CF;
   background-color: #2B2733;
+  color: #CBC9CF;
+  display: inline;
   font-size: 150%;
 }
 
 h3 {
+  color: #FFF;
   margin-left: 7%;
 }
 
@@ -47,6 +48,7 @@ input {
 }
 
 label {
+  color: #FFF;
   margin-bottom: 12%;
 }
 
@@ -55,22 +57,22 @@ p {
 }
 
 .activity-section {
+  background-color: #46424D;
+  border-radius: 5px;
+  box-shadow: 8px 5px 5px #26222D;
+  color: #CBC9CF;
+  display: flex;
+  flex-direction: column;
   margin-right:2%;
   margin-left: 2%;
   margin-top: 1%;
   margin-bottom: 4%;
-  background-color: #46424D;
-  color: #CBC9CF;
-  display: flex;
-  flex-direction: column;
-  width: 60%;
   padding: 50px;
-  box-shadow: 8px 5px 5px #26222D;
+  width: 60%;
 }
 
 .past-activities {
-  margin-left: -25%;
-  margin-right: 30%;
+  margin-right: 58%;
   margin-top: 5%;
   margin-bottom: 2%;
 }
@@ -80,7 +82,7 @@ p {
 }
 
 .new-activities {
-  margin-left: 4%;
+  margin-left: 2%;
   margin-top: 2%;
 }
 
@@ -100,7 +102,7 @@ p {
   font-size: 25%;
   padding-top: 15px;
   border: 1px solid #FFF;
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
 .study-button {
@@ -125,7 +127,7 @@ p {
 .button-text{
 padding-top: 11px;
 padding-bottom: 3px;
-color: #CBC9CF;
+color: #FFF;
 font-size: 18px;
 }
 
