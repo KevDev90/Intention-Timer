@@ -199,6 +199,10 @@ font-size: 18px;
   display: none;
 }
 
+#hide {
+  display: none;
+}
+
 .timer-container {
   display: flex;
   justify-content: space-around;
