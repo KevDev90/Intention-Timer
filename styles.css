@@ -49,7 +49,7 @@ input {
 
 label {
   color: #FFF;
-  margin-bottom: 12%;
+  margin-bottom: 13%;
 }
 
 p {
@@ -115,7 +115,6 @@ p {
  background-image: url("./assets/meditate.svg");
  background-repeat: no-repeat;
  background-origin: content-box;
-
 }
 
 .exercise-button {
@@ -194,6 +193,85 @@ font-size: 18px;
 
 .container2 {
   margin-right: 22.5%;
+}
+
+.hidden {
+  display: none;
+}
+
+#hide {
+  display: none;
+}
+
+.timer-container {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 60%;
+  background-color: #46424D;
+  margin-right:2%;
+  margin-left: 2%;
+  margin-top: 1%;
+  margin-bottom: 3%;
+  padding: 50px;
+}
+
+.start-timer-button {
+  height: 200px;
+  width: 200px;
+  border: 3px solid white;
+  border-radius: 50%;
+  background-color: #46424D;
+  font-size: 24px;
+  color: #FFF;
+  align-self: center;
+}
+
+.current-activity-text {
+  align-self: center;
+  font-size: 16px;
+}
+
+.input-div {
+  display: flex;
+  justify-content: space-around;
+  width: 175px;
+  margin-bottom: 40px;
+  align-self: center;
+}
+
+.min-sec-counter {
+  width: 85px;
+  font-size: 60px;
+  color: #FFF;
+  border: 0;
+  font-weight: bolder;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: #FFF;
+  margin-top: 14px;
+  margin-right: 5px;
+}
+
+.clock-colon-div {
+  padding-top: 10px;
+}
+
+.current-activity-text {
+  color: #CBC9CF;
+  font-size: 20px;
+}
+
+.log-button {
+  height: 30px;
+  width: 200px;
+  align-self: center;
+  margin-top: 30px;
+  font-size: 16px;
+  color: #46424D;
 }
 
 input[type=number]::-webkit-inner-spin-button,
