@@ -83,23 +83,26 @@ function makeStartEnabled() {
 
 function revealTimer() {
   event.preventDefault();
+  console.log('5')
   var timerTemplate = `
-  <section id="hide" class="timer-container">
+  <section class="timer-container">
         <span class="current-activity-text">${taskInput.value}</span>
         <div class="input-div">
-          <input class="min-sec-counter" type="text"${minuteInput.value}>
+          <span class="min-sec-counter">${minuteInput.value}</span>
           <div class="clock-colon-div">
             <div class="dot">
             </div>
             <div class="dot">
             </div>
           </div>
-          <input class="min-sec-counter" type="text"${secondInput.value}>
+          <span class="min-sec-counter">${secondInput.value}</span>
         </div>
         <button class="start-timer-button">START</button>
         <button class="log-button">LOG ACTIVITY</button>
       </section>
   `;
   var startTimer = document.querySelector('.start-activity');
+  console.log('6')
   timerContainer.innerHTML = timerTemplate;
+  console.log('7')
 };
