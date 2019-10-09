@@ -11,8 +11,9 @@
     <h1>INTENTION TIMER</h1>
   </header>
   <body>
-    <h2 class="new-activities">New Activity</h2>
-    <h2 class="past-activities">Past Activities</h2>
+    <div class="heading">
+      <h2 class="new-activities">New Activity</h2>
+    </div>
     <main>
 
       <section class="activity-section">
@@ -31,16 +32,22 @@
 
         <form>
           <div class="task-div">
-            <label for="task">What would you like to accomplish during this time?</label> <br>
+            <label class="task-label" for="task">What would you like to accomplish during this time?</label> <br>
             <input class="task-input"></input>
+          </div>
 
+          <section class="min-sec-div">
+            <div class="container1">
+              <label class="time-label" for="minutes">Minutes</label>
+              <input type="number" class="minute-input time-input"></input>
             </div>
-            <div class="min-sec-div">
-              <label for="minutes">Minutes</label>
-              <input type="number" class="minute-input"></input>
-              <label for="seconds">Seconds</label>
-              <input type="number" class="second-input"></input>
+            <div class="container2">
+              <label class="time-label" for="seconds">Seconds</label>
+              <input type="number" class="second-input time-input"></input>
             </div>
+          </section>
+
+
 
         </form>
 
@@ -48,6 +55,7 @@
       </section>
 
       <section class="right-section">
+        <h2 class="past-activities">Past Activities</h2>
         <p class="first-prompt">You haven't logged any activities yet.</p>
         <p class="second-prompt">Complete the form to the left to get started!</p>
       </section>
