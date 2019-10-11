@@ -105,27 +105,31 @@ function revealTimer() {
   document.querySelector('.minute-digits').innerHTML = minuteInput.value;
   document.querySelector('.second-digits').innerHTML = secondInput.value;
 
-  // event.preventDefault();
-  // console.log('5')
-  // var timerTemplate = `
-  // <section class="timer-container">
-  //       <span class="current-activity-text">${taskInput.value}</span>
-  //       <div class="input-div">
-  //         <span class="min-sec-counter minute-digits">${minuteInput.value}</span>
-  //         <div class="clock-colon-div">
-  //           <div class="dot">
-  //           </div>
-  //           <div class="dot">
-  //           </div>
-  //         </div>
-  //         <span class="min-sec-counter second-digits">${secondInput.value}</span>
-  //       </div>
-  //       <button class="start-timer-button">START</button>
-  //       <button class="log-button">LOG ACTIVITY</button>
-  //     </section>
-  // `;
-  // var startTimer = document.querySelector('.start-activity');
-  // console.log('6')
-  // timerContainer.innerHTML = timerTemplate;
-  // console.log('7')
-};
+  timerButton.addEventListener('click', beginTimer);
+  
+function beginTimer() {
+  var domMin = document.querySelector(".minute-digits");
+  var domSec = document.querySelector(".second-digits");
+  domMin = Number(domMin.innerText);
+  domSec = Number(domSec.innerText);
+  // Recursive function that only breaks if the condition is met
+  checkTheTime(domSec, domMin);
+}
+
+function checkTheTime(sec, min) {
+//!! Still need to represent these changes on the DOM
+  if (sec < 0 && min >0) { // If we're out of sec and have min remaining
+    min --;
+    sec += 60;
+    console.log('After TimeSlip:', min, sec)
+  } else if (sec === 0 && min === 0) { // If everything is 0, exit loop
+    console.log('Finished')
+    return 'Finished'
+  } else { // Decrement sec is default
+    sec --;
+    console.log('Timer at', min, sec)
+  }
+  // Here we use setTimeout to call this func every second
+  // We are passing it the changed values of sec & min
+  window.setTimeout(checkTheTime, 1000, sec, min);
+}
