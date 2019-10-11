@@ -10,6 +10,16 @@ var timerContainer = document.querySelector('.activity-section');
 var inputs = document.querySelectorAll('.input');
 var timerButton = document.querySelector('.start-timer-button');
 var newTimer = document.querySelector('.timer-container');
+var domMin = document.querySelector('.minute-digits');
+var domSec = document.querySelector('.second-digits');
+
+
+var endTime = new Date().setTime();
+var currentTime = new Date().getTime();
+var remainingTime = endTime - currentTime;
+var mins = Math.floor((remainingTime/1000)/60);
+var secs = Math.floor(remainingTime/1000);
+
 
 minuteInput.addEventListener("keydown", function(e) {
   if (invalidChar.includes(e.key)) {
@@ -50,7 +60,9 @@ exerciseButton.addEventListener('click', function(){
   meditateButton.classList.remove('meditateClass');
 });
 
-startButton.addEventListener('click', updateErrors)
+startButton.addEventListener('click', updateErrors);
+
+timerButton.addEventListener('click', beginTimer);
 
 
 minuteInput.addEventListener('keyup', function(){
@@ -71,6 +83,34 @@ if (taskInput.value !== '') {
   }
 })
 
+timerButton.addEventListener('click', beginTimer);
+
+function beginTimer() {
+  var domMin = document.querySelector(".minute-digits");
+  var domSec = document.querySelector(".second-digits");
+  domMin = Number(domMin.innerText);
+  domSec = Number(domSec.innerText);
+  // Recursive function that only breaks if the condition is met
+  checkTheTime(domSec, domMin);
+}
+
+function checkTheTime(sec, min) {
+//!! Still need to represent these changes on the DOM
+  if (sec < 0 && min >0) { // If we're out of sec and have min remaining
+    min --;
+    sec += 60;
+    console.log('After TimeSlip:', min, sec)
+  } else if (sec === 0 && min === 0) { // If everything is 0, exit loop
+    console.log('Finished')
+    return 'Finished'
+  } else { // Decrement sec is default
+    sec --;
+    console.log('Timer at', min, sec)
+  }
+  // Here we use setTimeout to call this func every second
+  // We are passing it the changed values of sec & min
+  window.setTimeout(checkTheTime, 1000, sec, min);
+}
 
 function updateErrors() {
   if (minuteInput.value === '' ||
@@ -105,6 +145,7 @@ function revealTimer() {
   document.querySelector('.minute-digits').innerHTML = minuteInput.value;
   document.querySelector('.second-digits').innerHTML = secondInput.value;
 
+
   timerButton.addEventListener('click', beginTimer);
   
 function beginTimer() {
@@ -132,4 +173,6 @@ function checkTheTime(sec, min) {
   // Here we use setTimeout to call this func every second
   // We are passing it the changed values of sec & min
   window.setTimeout(checkTheTime, 1000, sec, min);
+
+
 }
