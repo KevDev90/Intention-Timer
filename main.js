@@ -86,26 +86,39 @@ if (taskInput.value !== '') {
 timerButton.addEventListener('click', beginTimer);
 
 function beginTimer() {
-  var domMin = document.querySelector(".minute-digits");
-  var domSec = document.querySelector(".second-digits");
-  domMin = Number(domMin.innerText);
-  domSec = Number(domSec.innerText);
+  // var domMin = document.querySelector(".minute-digits");
+  // var domSec = document.querySelector(".second-digits");
+  var domMinText = Number(domMin.innerText);
+  var domSecText = Number(domSec.innerText);
   // Recursive function that only breaks if the condition is met
-  checkTheTime(domSec, domMin);
+  checkTheTime(domSecText, domMinText);
 }
 
 function checkTheTime(sec, min) {
 //!! Still need to represent these changes on the DOM
-  if (sec < 0 && min >0) { // If we're out of sec and have min remaining
+  if (sec < 1 && min >0) { // If we're out of sec and have min remaining
     min --;
-    sec += 60;
-    console.log('After TimeSlip:', min, sec)
+    sec += 59;
+    domSec.innerHTML = sec;
+    if (min < 10) {
+      domMin.innerText = "0" + min;
+    } else {
+      domMin.innerText = min;
+
+    }
+
+
   } else if (sec === 0 && min === 0) { // If everything is 0, exit loop
-    console.log('Finished')
-    return 'Finished'
+    timerButton.innerHTML = "COMPLETE!";
+    document.querySelector('.log-button').classList.remove('invisible');
   } else { // Decrement sec is default
     sec --;
-    console.log('Timer at', min, sec)
+    if (sec < 10) {
+      domSec.innerText = "0" + sec;
+    } else {
+      domSec.innerText = sec;
+
+    }
   }
   // Here we use setTimeout to call this func every second
   // We are passing it the changed values of sec & min
@@ -144,4 +157,12 @@ function revealTimer() {
   document.querySelector('.current-activity-text').innerHTML = taskInput.value;
   document.querySelector('.minute-digits').innerHTML = minuteInput.value;
   document.querySelector('.second-digits').innerHTML = secondInput.value;
+}
+
+class activityLog {
+  constructor(category, time, intention) {
+    this.category = category;
+    this.time = time;
+    this.intention = intention;
+  }
 }
