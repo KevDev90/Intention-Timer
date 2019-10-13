@@ -32,11 +32,6 @@ h2 {
   font-size: 150%;
 }
 
-h3 {
-  color: #FFF;
-  margin-left: 7%;
-}
-
 body {
   background-color: #2B2733;
   font-family: 'Montserrat';
@@ -204,6 +199,11 @@ font-size: 18px;
   margin-right: 22.5%;
 }
 
+.select-category {
+  color: #FFF;
+  margin-left: 7%;
+}
+
 #hide {
   display: none;
 }
@@ -219,7 +219,7 @@ font-size: 18px;
   margin-top: 1%;
   margin-bottom: 3%;
   padding-top: 50px;
-  padding-bottom: 50px;
+  padding-bottom: 60px;
 }
 
 .start-timer-button {
@@ -231,11 +231,6 @@ font-size: 18px;
   font-size: 24px;
   color: #FFF;
   align-self: center;
-}
-
-.current-activity-text {
-  align-self: center;
-  font-size: 16px;
 }
 
 .input-div {
@@ -269,6 +264,7 @@ font-size: 18px;
 .current-activity-text {
   color: #CBC9CF;
   font-size: 20px;
+  align-self: center;
 }
 
 .log-button {
@@ -278,6 +274,7 @@ font-size: 18px;
   margin-top: 30px;
   font-size: 16px;
   color: #46424D;
+  margin-bottom: 50px;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -348,4 +345,42 @@ input {
   color: #FFF;
   font-size: 24px;
   margin: 25px;
+}
+
+.past-activity {
+  width: 500px;
+  height: 100px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #46424D;
+}
+
+.card-text {
+  color: #CBC9CF;
+  font-size: 18px;
+}
+
+.border-section {
+  color: #FFF;
+  margin-bottom: 10px;
+}
+
+.new-activity-button {
+  width: 400px;
+  height: 30px;
+  background-color: #FFF;
+  color: #46424D;
+}
+
+.new-activity-button-div {
+  margin-right: 2%;
+  margin-left: 2%;
+  margin-top: 1%;
+  margin-bottom: 4%;
+  background-color: #46424D;
+  width: 60%;
+  height: 500px;
+  box-shadow: 8px 5px 5px #26222D;
+  border-radius: 5px;
 }
