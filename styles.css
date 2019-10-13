@@ -4,7 +4,7 @@
   box-sizing: border-box;
   /* border: 1px solid red; */
 }
-
+  
 main {
   display: flex;
   justify-content: center;
@@ -94,8 +94,8 @@ p {
 }
 
 .button {
-  width: 20%;
-  height: 80px;
+  width: 155px;
+  height: 85px;
   background-color: #46424D;
   background-position: center top;
   background-size: 25px;
@@ -206,6 +206,10 @@ font-size: 18px;
 
 .hidden {
   display: none;
+}
+
+.invisible {
+  visibility: hidden;
 }
 
 #hide {
