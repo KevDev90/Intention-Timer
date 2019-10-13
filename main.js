@@ -183,3 +183,4 @@ function revealTimer() {
 //   meditate: '#C278FD',
 //   exercise: '#FD8078',
 // };
+
