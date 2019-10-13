@@ -1,7 +1,7 @@
 var studyButton = document.querySelector('.study-button');
 var meditateButton = document.querySelector('.meditate-button');
 var exerciseButton = document.querySelector('.exercise-button');
-var invalidChar = [  "-",  "+",  "e", "."];
+var invalidChar = ["-",  "+",  "e", "."];
 var minuteInput = document.querySelector('.minute-input');
 var secondInput = document.querySelector('.second-input');
 var taskInput = document.querySelector('.task-input');
@@ -12,7 +12,8 @@ var timerButton = document.querySelector('.start-timer-button');
 var newTimer = document.querySelector('.timer-container');
 var domMin = document.querySelector('.minute-digits');
 var domSec = document.querySelector('.second-digits');
-
+var activityLog = [];
+var chosenActivity = '';
 
 var endTime = new Date().setTime();
 var currentTime = new Date().getTime();
@@ -40,6 +41,7 @@ studyButton.addEventListener('click', function(){
   timerButton.classList.remove('exercise-color');
   exerciseButton.classList.remove('exerciseClass');
   meditateButton.classList.remove('meditateClass');
+  chosenActivity = "Study";
 });
 
 meditateButton.addEventListener('click', function(){
@@ -49,6 +51,7 @@ meditateButton.addEventListener('click', function(){
   timerButton.classList.remove('exercise-color');
   studyButton.classList.remove('studyClass');
   exerciseButton.classList.remove('exerciseClass');
+  chosenActivity = "Meditate";
 });
 
 exerciseButton.addEventListener('click', function(){
@@ -58,6 +61,7 @@ exerciseButton.addEventListener('click', function(){
   timerButton.classList.remove('meditate-color');
   studyButton.classList.remove('studyClass');
   meditateButton.classList.remove('meditateClass');
+  chosenActivity = "Exercise";
 });
 
 startButton.addEventListener('click', updateErrors);
@@ -86,8 +90,6 @@ if (taskInput.value !== '') {
 timerButton.addEventListener('click', beginTimer);
 
 function beginTimer() {
-  // var domMin = document.querySelector(".minute-digits");
-  // var domSec = document.querySelector(".second-digits");
   var domMinText = Number(domMin.innerText);
   var domSecText = Number(domSec.innerText);
   // Recursive function that only breaks if the condition is met
@@ -95,8 +97,7 @@ function beginTimer() {
 }
 
 function checkTheTime(sec, min) {
-//!! Still need to represent these changes on the DOM
-  if (sec < 1 && min >0) { // If we're out of sec and have min remaining
+  if (sec < 1 && min >0) {
     min --;
     sec += 59;
     domSec.innerHTML = sec;
@@ -104,20 +105,18 @@ function checkTheTime(sec, min) {
       domMin.innerText = "0" + min;
     } else {
       domMin.innerText = min;
-
     }
-
-
-  } else if (sec === 0 && min === 0) { // If everything is 0, exit loop
+  } else if (sec === 0 && min === 0) { // If everything is 0, exit loop and bring up bring up message
     timerButton.innerHTML = "COMPLETE!";
     document.querySelector('.log-button').classList.remove('invisible');
+    document.querySelector('.input-div').classList.add('hidden');
+    document.querySelector('.motivate').classList.remove('hidden');
   } else { // Decrement sec is default
     sec --;
     if (sec < 10) {
       domSec.innerText = "0" + sec;
     } else {
       domSec.innerText = sec;
-
     }
   }
   // Here we use setTimeout to call this func every second
@@ -145,11 +144,11 @@ if (minuteInput.value !== '' &&
 
 function emptyInputError() {
   document.querySelector('.start-error').classList.remove('hidden');
-}
+};
 
 function makeStartEnabled() {
   startButton.disabled = false;
-}
+};
 
 function revealTimer() {
   timerContainer.classList.add('hidden');
@@ -157,12 +156,30 @@ function revealTimer() {
   document.querySelector('.current-activity-text').innerHTML = taskInput.value;
   document.querySelector('.minute-digits').innerHTML = minuteInput.value;
   document.querySelector('.second-digits').innerHTML = secondInput.value;
-}
+};
 
-class activityLog {
-  constructor(category, time, intention) {
-    this.category = category;
-    this.time = time;
-    this.intention = intention;
-  }
-}
+// class activity {
+//   constructor(minutes, seconds, intention, color, message) {
+//     this.category = chosenActivity;
+//     this.minutes = minutes;
+//     this.seconds = seconds;
+//     this.intention = intention;
+//     this.color = color;
+//     this.message = message;
+//   }
+// };
+//
+// var activity1 = new activity {
+//   category = chosenActivity;
+//   minutes = minuteInput.value;
+//   seconds = secondInput.value;
+//   intention = document.querySelector('.current-activity-text').value;
+//   color = categoryObject[chosenActivity];
+//   message = '';
+// };
+//
+// var categoryObject = {
+//   study: '#83FD78',
+//   meditate: '#C278FD',
+//   exercise: '#FD8078',
+// };
