@@ -14,6 +14,8 @@ var domMin = document.querySelector('.minute-digits');
 var domSec = document.querySelector('.second-digits');
 var activityLog = [];
 var chosenActivity = '';
+var logButton = document.querySelector('.log-button');
+var rightSection = document.querySelector('.right-section');
 
 var endTime = new Date().setTime();
 var currentTime = new Date().getTime();
@@ -158,18 +160,35 @@ function revealTimer() {
   document.querySelector('.second-digits').innerHTML = secondInput.value;
 };
 
-// class activity {
-//   constructor(minutes, seconds, intention, color, message) {
-//     this.category = chosenActivity;
-//     this.minutes = minutes;
-//     this.seconds = seconds;
-//     this.intention = intention;
-//     this.color = color;
-//     this.message = message;
-//   }
-// };
-//
-// var activity1 = new activity {
+logButton.addEventListener('click', addPastActivity);
+
+function createInstance() {
+  var pastActivity = new Activity(chosenActivity.value, minuteInput.value, secondInput.value, taskInput.value);
+  activityLog.push(pastActivity);
+  return pastActivity;
+};
+
+function addPastActivity() {
+  var newActivity = createInstance();
+  makeCard(newActivity);
+  document.querySelector('.first-prompt').classList.add('hidden');
+  document.querySelector('.second-prompt').classList.add('hidden');
+  newTimer.classList.add('hidden');
+  document.querySelector('.new-activity-button-div').classList.remove('hidden');
+};
+
+function makeCard(newActivity) {
+  rightSection.insertAdjacentHTML('beforeend', `<div id="${newActivity.id}" class="past-activity">
+  <div class="border-section">
+  <h3 class="category">${newActivity.category}</h3>
+  <h3 class="time-display">${newActivity.minutes} MIN ${newActivity.seconds} SECONDS</h3>
+  </div>
+  <p class="task-description card-text">${newActivity.intention}</p>
+  <p class="message card-text"></p>
+  </div>`)
+};
+
+// var pastActivity = new Activity {
 //   category = chosenActivity;
 //   minutes = minuteInput.value;
 //   seconds = secondInput.value;
@@ -177,10 +196,9 @@ function revealTimer() {
 //   color = categoryObject[chosenActivity];
 //   message = '';
 // };
-//
-// var categoryObject = {
-//   study: '#83FD78',
-//   meditate: '#C278FD',
-//   exercise: '#FD8078',
-// };
 
+// var categoryObject = {
+//   "Study": '#83FD78',
+//   "Meditate": '#C278FD',
+//   "Exercise": '#FD8078',
+// };
