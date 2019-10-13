@@ -4,7 +4,7 @@
   box-sizing: border-box;
   /* border: 1px solid red; */
 }
-  
+
 main {
   display: flex;
   justify-content: center;
@@ -204,14 +204,6 @@ font-size: 18px;
   margin-right: 22.5%;
 }
 
-.hidden {
-  display: none;
-}
-
-.invisible {
-  visibility: hidden;
-}
-
 #hide {
   display: none;
 }
@@ -253,7 +245,6 @@ font-size: 18px;
   margin-bottom: 40px;
   align-self: center;
 }
-
 
 .min-sec-counter {
   width: 85px;
@@ -333,12 +324,10 @@ input {
   background-image: url("./assets/exercise-active.svg");
 }
 
-
 .error {
   height: 30px;
   width: 30px;
   margin-left: 200px;
-
 }
 
 .start-error {
@@ -349,4 +338,14 @@ input {
 
 .hidden {
   display: none;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.motivate {
+  color: #FFF;
+  font-size: 24px;
+  margin: 25px;
 }
