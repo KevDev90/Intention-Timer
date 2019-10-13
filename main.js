@@ -188,6 +188,11 @@ function makeCard(newActivity) {
   </div>`)
 };
 
+document.querySelector('.new-activity-button').addEventListener('click', function() {
+  timerContainer.classList.remove('hidden');
+  document.querySelector('.new-activity-button-div').classList.add('hidden');
+})
+
 // var pastActivity = new Activity {
 //   category = chosenActivity;
 //   minutes = minuteInput.value;
