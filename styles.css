@@ -349,7 +349,7 @@ input {
 
 .past-activity {
   width: 500px;
-  height: 100px;
+  height: 130px;
   border-radius: 5px;
   margin-bottom: 10px;
   padding: 10px;
@@ -383,4 +383,31 @@ input {
   height: 500px;
   box-shadow: 8px 5px 5px #26222D;
   border-radius: 5px;
+}
+
+.favorite-card {
+  background-image: url(assets/favorite.svg);
+  background-repeat: no-repeat;
+  height: 25px;
+  width: 25px;
+  background-color: transparent;
+  padding-bottom: 7px;
+  border-color: transparent;
+}
+
+.favorite {
+  background-image: url(assets/favorite-active.svg);
+  background-repeat: no-repeat;
+}
+
+.redoCard {
+  height: 25px;
+  width: 25px;
+}
+
+.div-soup {
+  display: flex;
+  width: 450px;
+  justify-content: space-between;
+
 }
