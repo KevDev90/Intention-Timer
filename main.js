@@ -14,6 +14,7 @@ var domMin = document.querySelector('.minute-digits');
 var domSec = document.querySelector('.second-digits');
 var activityLog = [];
 var chosenActivity = '';
+var borderColor = '';
 var logButton = document.querySelector('.log-button');
 var rightSection = document.querySelector('.right-section');
 var endTime = new Date().setTime();
@@ -37,9 +38,9 @@ secondInput.addEventListener("keydown", function(e) {
 
 studyButton.addEventListener('click', function(){
   studyButton.classList.toggle('studyClass');
-  timerButton.classList.toggle('study-color');
-  timerButton.classList.remove('meditate-color');
-  timerButton.classList.remove('exercise-color');
+  timerButton.classList.toggle('study-timer-border');
+  timerButton.classList.remove('meditate-timer-border');
+  timerButton.classList.remove('exercise-timer-border');
   exerciseButton.classList.remove('exerciseClass');
   meditateButton.classList.remove('meditateClass');
   chosenActivity = "Study";
@@ -47,27 +48,27 @@ studyButton.addEventListener('click', function(){
 
 meditateButton.addEventListener('click', function(){
   meditateButton.classList.toggle('meditateClass');
-  timerButton.classList.toggle('meditate-color');
-  timerButton.classList.remove('study-color');
-  timerButton.classList.remove('exercise-color');
+  timerButton.classList.toggle('meditate-timer-border');
+  timerButton.classList.remove('study-timer-border');
+  timerButton.classList.remove('exercise-timer-border');
   studyButton.classList.remove('studyClass');
   exerciseButton.classList.remove('exerciseClass');
   chosenActivity = "Meditate";
+
 });
 
 exerciseButton.addEventListener('click', function(){
   exerciseButton.classList.toggle('exerciseClass');
-  timerButton.classList.toggle('exercise-color');
-  timerButton.classList.remove('study-color');
-  timerButton.classList.remove('meditate-color');
+  timerButton.classList.toggle('exercise-timer-border');
+  timerButton.classList.remove('study-timer-border');
+  timerButton.classList.remove('meditate-timer-border');
   studyButton.classList.remove('studyClass');
   meditateButton.classList.remove('meditateClass');
   chosenActivity = "Exercise";
+
 });
 
 startButton.addEventListener('click', updateErrors);
-
-timerButton.addEventListener('click', beginTimer);
 
 
 minuteInput.addEventListener('keyup', function(){
@@ -90,7 +91,7 @@ if (taskInput.value !== '') {
 
 timerButton.addEventListener('click', beginTimer);
 
-logButton.addEventListener('click', addPastActivity);
+logButton.addEventListener('click', addPastActivity, styleBorder);
 
 function beginTimer() {
   var domMinText = Number(domMin.innerText);
@@ -171,7 +172,7 @@ function addPastActivity() {
 
 function makeCard(newActivity) {
   rightSection.insertAdjacentHTML('beforeend', `<div id="${newActivity.id}" class="past-activity">
-  <div class="border-section">
+  <div class="${newActivity.category}-color">
   <h3 class="category">${newActivity.category}</h3>
   <h3 class="time-display">${newActivity.minutes} MIN ${newActivity.seconds} SECONDS</h3>
   </div>
@@ -188,6 +189,10 @@ document.querySelector('.new-activity-button').addEventListener('click', functio
   timerContainer.classList.remove('hidden');
   document.querySelector('.new-activity-button-div').classList.add('hidden');
 });
+
+function styleBorder() {
+  window.getComputedStyle(document.querySelector())
+}
 
 function favoriteButton(event) {
    console.log('event',event);
