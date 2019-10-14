@@ -409,5 +409,14 @@ input {
   display: flex;
   width: 450px;
   justify-content: space-between;
+}
 
+.new-activity-button {
+  width: 350px;
+  height: 30px;
+  background-color: #FFF;
+  color: #46424D;
+  margin-top: -300px;
+  border-radius: 5px;
+  font-size: 18px;
 }
