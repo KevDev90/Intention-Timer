@@ -16,7 +16,6 @@ var activityLog = [];
 var chosenActivity = '';
 var logButton = document.querySelector('.log-button');
 var rightSection = document.querySelector('.right-section');
-
 var endTime = new Date().setTime();
 var currentTime = new Date().getTime();
 var remainingTime = endTime - currentTime;
@@ -91,10 +90,11 @@ if (taskInput.value !== '') {
 
 timerButton.addEventListener('click', beginTimer);
 
+logButton.addEventListener('click', addPastActivity);
+
 function beginTimer() {
   var domMinText = Number(domMin.innerText);
   var domSecText = Number(domSec.innerText);
-  // Recursive function that only breaks if the condition is met
   checkTheTime(domSecText, domMinText);
 }
 
@@ -102,18 +102,18 @@ function checkTheTime(sec, min) {
   if (sec < 1 && min >0) {
     min --;
     sec += 59;
-    domSec.innerHTML = sec;
+    domSec.innerText = sec;
     if (min < 10) {
       domMin.innerText = "0" + min;
     } else {
       domMin.innerText = min;
     }
-  } else if (sec === 0 && min === 0) { // If everything is 0, exit loop and bring up bring up message
+  } else if (sec === 0 && min === 0) {
     timerButton.innerHTML = "COMPLETE!";
     document.querySelector('.log-button').classList.remove('invisible');
     document.querySelector('.input-div').classList.add('hidden');
     document.querySelector('.motivate').classList.remove('hidden');
-  } else { // Decrement sec is default
+  } else {
     sec --;
     if (sec < 10) {
       domSec.innerText = "0" + sec;
@@ -121,8 +121,6 @@ function checkTheTime(sec, min) {
       domSec.innerText = sec;
     }
   }
-  // Here we use setTimeout to call this func every second
-  // We are passing it the changed values of sec & min
   window.setTimeout(checkTheTime, 1000, sec, min);
 }
 
@@ -130,16 +128,12 @@ function updateErrors() {
   if (minuteInput.value === '' ||
      secondInput.value === '' ||
      taskInput.value === '') {
-     console.log('1')
      emptyInputError();
-     console.log('2')
      startButton.disabled = true;
-     console.log('3')
-}
+     }
 if (minuteInput.value !== '' &&
     secondInput.value !== '' &&
     taskInput.value !== '') {
-      console.log('4')
     revealTimer()
   }
 }
@@ -159,8 +153,6 @@ function revealTimer() {
   document.querySelector('.minute-digits').innerHTML = minuteInput.value;
   document.querySelector('.second-digits').innerHTML = secondInput.value;
 };
-
-logButton.addEventListener('click', addPastActivity);
 
 function createInstance() {
   var pastActivity = new Activity(chosenActivity.value, minuteInput.value, secondInput.value, taskInput.value);
@@ -185,20 +177,28 @@ function makeCard(newActivity) {
   </div>
   <p class="task-description card-text">${newActivity.intention}</p>
   <p class="message card-text"></p>
+  <div class="div-soup">
+  <button class="redo-card" type="button" onclick= "redoCard(event)">REDO</button>
+  <button class="favorite-card" type="button" onclick= "favoriteButton(event)"></button>
+  </div>
   </div>`)
 };
 
-// var pastActivity = new Activity {
-//   category = chosenActivity;
-//   minutes = minuteInput.value;
-//   seconds = secondInput.value;
-//   intention = document.querySelector('.current-activity-text').value;
-//   color = categoryObject[chosenActivity];
-//   message = '';
-// };
+function favoriteButton(event) {
+   console.log('event',event);
+  var cardId = event.target.closest('.past-activity').id;
+  var favButton = document.querySelector('favorite-card')
+  var instance = activityLog.find(function(task){
+    return Number(task.id) === Number(cardId);
+  })
+  instance.toggleFavorite();
+  if (!instance.favorite) {
+    event.target.classList.remove('favorite');
+  } else {
+    event.target.classList.add('favorite');
+  }
+}
 
-// var categoryObject = {
-//   "Study": '#83FD78',
-//   "Meditate": '#C278FD',
-//   "Exercise": '#FD8078',
-// };
+function redoCard(event) {
+
+}

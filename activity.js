@@ -7,5 +7,10 @@ class Activity {
     this.color = color;
     this.message = message;
     this.id = Date.now();
+    this.favorite - false;
+  }
+
+  toggleFavorite() {
+  this.favorite = !this.favorite;
   }
 };
