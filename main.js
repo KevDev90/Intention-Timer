@@ -184,6 +184,11 @@ function makeCard(newActivity) {
   </div>`)
 };
 
+document.querySelector('.new-activity-button').addEventListener('click', function() {
+  timerContainer.classList.remove('hidden');
+  document.querySelector('.new-activity-button-div').classList.add('hidden');
+});
+
 function favoriteButton(event) {
    console.log('event',event);
   var cardId = event.target.closest('.past-activity').id;
