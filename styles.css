@@ -225,7 +225,7 @@ font-size: 18px;
 .start-timer-button {
   height: 200px;
   width: 200px;
-  border: 3px solid white;
+  border: 3px solid #FFF;
   border-radius: 50%;
   background-color: #46424D;
   font-size: 24px;
@@ -277,6 +277,21 @@ font-size: 18px;
   margin-bottom: 50px;
 }
 
+.new-activity-button-div {
+  margin-right: 2%;
+  margin-left: 2%;
+  margin-top: 1%;
+  margin-bottom: 4%;
+  background-color: #46424D;
+  width: 60%;
+  height: 500px;
+  box-shadow: 8px 5px 5px #26222D;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -289,18 +304,6 @@ input {
   background: #46424D;
   border-bottom: 1px solid #A5A3A7;
   color: #A4A0A8;
-}
-
-.study-color {
-  border-color: #B3FD78;
-}
-
-.meditate-color {
-  border-color: #C278FD;
-}
-
-.exercise-color {
-  border-color: #FD8078;
 }
 
 .studyClass {
@@ -354,6 +357,7 @@ input {
   margin-bottom: 10px;
   padding: 10px;
   background-color: #46424D;
+  box-shadow: 8px 5px 5px #26222D;
 }
 
 .card-text {
@@ -361,9 +365,34 @@ input {
   font-size: 18px;
 }
 
-.border-section {
+.study-timer-border {
   color: #FFF;
-  margin-bottom: 10px;
+  border: 3px solid #B3FD78;
+}
+
+.meditate-timer-border {
+  color: #FFF;
+  border: 3px solid #C278FD;
+}
+
+.exercise-timer-border {
+  color: #FFF;
+  border: 3px solid #FD8078;
+}
+
+.Study-color {
+  color: #FFF;
+  border-right: 3px solid #B3FD78;
+}
+
+.Meditate-color {
+  color: #FFF;
+  border: 3px solid #C278FD;
+}
+
+.Exercise-color {
+  color: #FFF;
+  border: 3px solid #FD8078;
 }
 
 .new-activity-button {
@@ -371,18 +400,6 @@ input {
   height: 30px;
   background-color: #FFF;
   color: #46424D;
-}
-
-.new-activity-button-div {
-  margin-right: 2%;
-  margin-left: 2%;
-  margin-top: 1%;
-  margin-bottom: 4%;
-  background-color: #46424D;
-  width: 60%;
-  height: 500px;
-  box-shadow: 8px 5px 5px #26222D;
-  border-radius: 5px;
 }
 
 .favorite-card {
