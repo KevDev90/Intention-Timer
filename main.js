@@ -22,6 +22,10 @@ var currentTime = new Date().getTime();
 var remainingTime = endTime - currentTime;
 var mins = Math.floor((remainingTime/1000)/60);
 var secs = Math.floor(remainingTime/1000);
+var acc = document.getElementsByClassName("accordion");
+var userMessage = document.querySelector('.user-message');
+var i;
+
 
 
 minuteInput.addEventListener("keydown", function(e) {
@@ -38,6 +42,9 @@ secondInput.addEventListener("keydown", function(e) {
 
 studyButton.addEventListener('click', function(){
   studyButton.classList.toggle('studyClass');
+  studyButton.classList.toggle('Class');
+  exerciseButton.classList.remove('Class');
+  meditateButton.classList.remove('Class');
   timerButton.classList.toggle('study-timer-border');
   timerButton.classList.remove('meditate-timer-border');
   timerButton.classList.remove('exercise-timer-border');
@@ -47,6 +54,9 @@ studyButton.addEventListener('click', function(){
 });
 
 meditateButton.addEventListener('click', function(){
+  meditateButton.classList.toggle('Class');
+  studyButton.classList.remove('Class');
+  exerciseButton.classList.remove('Class');
   meditateButton.classList.toggle('meditateClass');
   timerButton.classList.toggle('meditate-timer-border');
   timerButton.classList.remove('study-timer-border');
@@ -59,6 +69,9 @@ meditateButton.addEventListener('click', function(){
 
 exerciseButton.addEventListener('click', function(){
   exerciseButton.classList.toggle('exerciseClass');
+  exerciseButton.classList.toggle('Class');
+  studyButton.classList.remove('Class');
+  meditateButton.classList.remove('Class');
   timerButton.classList.toggle('exercise-timer-border');
   timerButton.classList.remove('study-timer-border');
   timerButton.classList.remove('meditate-timer-border');
@@ -69,6 +82,7 @@ exerciseButton.addEventListener('click', function(){
 });
 
 startButton.addEventListener('click', updateErrors);
+
 
 
 minuteInput.addEventListener('keyup', function(){
@@ -89,9 +103,15 @@ if (taskInput.value !== '') {
   }
 })
 
+document.querySelector('.right-section').addEventListener('click', addRedo);
+
+
+
 timerButton.addEventListener('click', beginTimer);
 
-logButton.addEventListener('click', addPastActivity, styleBorder);
+logButton.addEventListener('click', addPastActivity);
+
+document.querySelector('.new-activity-button').addEventListener('click', backToMain);
 
 function beginTimer() {
   var domMinText = Number(domMin.innerText);
@@ -126,16 +146,18 @@ function checkTheTime(sec, min) {
 }
 
 function updateErrors() {
-  if (minuteInput.value === '' ||
+if (minuteInput.value === '' ||
      secondInput.value === '' ||
      taskInput.value === '') {
      emptyInputError();
      startButton.disabled = true;
+     console.log('2')
      }
 if (minuteInput.value !== '' &&
     secondInput.value !== '' &&
     taskInput.value !== '') {
     revealTimer()
+    disableRedoButton()
   }
 }
 
@@ -156,7 +178,7 @@ function revealTimer() {
 };
 
 function createInstance() {
-  var pastActivity = new Activity(chosenActivity.value, minuteInput.value, secondInput.value, taskInput.value);
+  var pastActivity = new Activity(chosenActivity.value, minuteInput.value, secondInput.value, taskInput.value, userMessage.value);
   activityLog.push(pastActivity);
   return pastActivity;
 };
@@ -168,6 +190,7 @@ function addPastActivity() {
   document.querySelector('.second-prompt').classList.add('hidden');
   newTimer.classList.add('hidden');
   document.querySelector('.new-activity-button-div').classList.remove('hidden');
+
 };
 
 function makeCard(newActivity) {
@@ -179,28 +202,36 @@ function makeCard(newActivity) {
   <p class="task-description card-text">${newActivity.intention}</p>
   <p class="message card-text"></p>
   <div class="div-soup">
-  <button class="redo-card" type="button" onclick= "redoCard(event)">REDO</button>
+  <button class="redo-card" disabled=true type="button" onclick= "addRedo(event)">REDO</button>
   <button class="favorite-card" type="button" onclick= "favoriteButton(event)"></button>
+  </div>
+  <button class="accordion"></button>
+  <div class="panel">
+  <p>${newActivity.message}</p>
   </div>
   </div>`)
 };
 
-document.querySelector('.new-activity-button').addEventListener('click', function() {
+document.querySelector('.new-activity-button').addEventListener('click', backToMain)
+
+function backToMain() {
   timerContainer.classList.remove('hidden');
   document.querySelector('.new-activity-button-div').classList.add('hidden');
-});
+  enableRedoButton()
+};
 
-function styleBorder() {
-  window.getComputedStyle(document.querySelector())
-}
 
 function favoriteButton(event) {
    console.log('event',event);
   var cardId = event.target.closest('.past-activity').id;
   var favButton = document.querySelector('favorite-card')
   var instance = activityLog.find(function(task){
+
     return Number(task.id) === Number(cardId);
+
+
   })
+  console.log(instance)
   instance.toggleFavorite();
   if (!instance.favorite) {
     event.target.classList.remove('favorite');
@@ -209,6 +240,73 @@ function favoriteButton(event) {
   }
 }
 
-function redoCard(event) {
-
+function enableRedoButton() {
+  var buttons = document.querySelectorAll('.redo-card');
+  for (var i=0; i < activityLog.length; i++) {
+    activityLog[i].redo = true
+    buttons[i].disabled = false;
+  }
 }
+
+function disableRedoButton() {
+  var buttons = document.querySelectorAll('.redo-card');
+  for (var i=0; i < activityLog.length; i++) {
+    activityLog[i].redo = false
+    buttons[i].disabled = true;
+  }
+}
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    console.log('1');
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    console.log('2');
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+      console.log('3');
+    }
+  });
+}
+
+function addRedo(event) {
+  if(event.target.classList.contains('redo-card')){
+  var cardId = event.target.closest('.past-activity').id;
+  var instance = activityLog.find(function(task){
+    return Number(task.id) === Number(cardId);
+  })
+    taskInput.value = instance.intention;
+    minuteInput.value = instance.minutes;
+    secondInput.value = instance.seconds;
+
+  }
+}
+
+
+
+// use the above to find the instance
+// find the input elements using querySelector's or globally
+// assign the value of those elements to the instance property values
+// instance.category instance.minutes
+// this input element = instance.minutes
+//change them in the form look that up, might run into it not wanting to edit it.
+//once its edited, reassign those properties on the instance to those new input values
+//
+
+
+//
+// function redoCard(event) {
+//   var cardId = event.target.closest('.past-activity').id;
+//   var redoButton = document.querySelector('redo-card')
+//   var instance = activityLog.find(function(task){
+//     return Number(task.id) === Number(cardId);
+//   })
+//   instance.changeRedo();
+// }
+//
+//
+// //
+//   function changeRedo(event) {
+//   if (!event.target.classList.contains('my-selector-class')
