@@ -151,7 +151,6 @@ if (minuteInput.value === '' ||
      taskInput.value === '') {
      emptyInputError();
      startButton.disabled = true;
-     console.log('2')
      }
 if (minuteInput.value !== '' &&
     secondInput.value !== '' &&
@@ -222,7 +221,7 @@ function backToMain() {
 
 
 function favoriteButton(event) {
-   console.log('event',event);
+
   var cardId = event.target.closest('.past-activity').id;
   var favButton = document.querySelector('favorite-card')
   var instance = activityLog.find(function(task){
@@ -259,7 +258,6 @@ function addRedo(event) {
   var instance = activityLog.find(function(task){
     return Number(task.id) === Number(cardId);
   });
-  console.log('yooo');
     taskInput.value = instance.intention;
     minuteInput.value = instance.minutes;
     secondInput.value = instance.seconds;
