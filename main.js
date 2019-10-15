@@ -151,7 +151,6 @@ if (minuteInput.value === '' ||
      taskInput.value === '') {
      emptyInputError();
      startButton.disabled = true;
-     console.log('2')
      }
 if (minuteInput.value !== '' &&
     secondInput.value !== '' &&
@@ -222,16 +221,12 @@ function backToMain() {
 
 
 function favoriteButton(event) {
-   console.log('event',event);
+
   var cardId = event.target.closest('.past-activity').id;
   var favButton = document.querySelector('favorite-card')
   var instance = activityLog.find(function(task){
-
-    return Number(task.id) === Number(cardId);
-
-
+  return Number(task.id) === Number(cardId);
   })
-  console.log(instance)
   instance.toggleFavorite();
   if (!instance.favorite) {
     event.target.classList.remove('favorite');
@@ -256,31 +251,16 @@ function disableRedoButton() {
   }
 }
 
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    console.log('1');
-    this.classList.toggle("active");
-    var panel = this.nextElementSibling;
-    console.log('2');
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-      console.log('3');
-    }
-  });
-}
 
 function addRedo(event) {
   if(event.target.classList.contains('redo-card')){
   var cardId = event.target.closest('.past-activity').id;
   var instance = activityLog.find(function(task){
     return Number(task.id) === Number(cardId);
-  })
+  });
     taskInput.value = instance.intention;
     minuteInput.value = instance.minutes;
     secondInput.value = instance.seconds;
-
   }
 }
 
