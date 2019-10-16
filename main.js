@@ -105,7 +105,7 @@ if (taskInput.value !== '') {
 
 document.querySelector('.right-section').addEventListener('click', addRedo);
 
-
+document.querySelector('.new-activity-button').addEventListener('click', backToMain)
 
 timerButton.addEventListener('click', beginTimer);
 
@@ -119,7 +119,9 @@ function beginTimer() {
   checkTheTime(domSecText, domMinText);
 }
 
+var t;
 function checkTheTime(sec, min) {
+  clearTimeout(t);
   if (sec < 1 && min >0) {
     min --;
     sec += 59;
@@ -134,18 +136,24 @@ function checkTheTime(sec, min) {
     document.querySelector('.log-button').classList.remove('invisible');
     document.querySelector('.input-div').classList.add('hidden');
     document.querySelector('.motivate').classList.remove('hidden');
+    return;
   } else {
     sec --;
     if (sec < 10) {
       domSec.innerText = "0" + sec;
-    } else {
+    }
+    else {
       domSec.innerText = sec;
     }
   }
-  window.setTimeout(checkTheTime, 1000, sec, min);
-}
+  var t = window.setTimeout(checkTheTime, 1000, sec, min);
+
+  }
+
 
 function updateErrors() {
+  document.querySelector('.motivate').classList.add('hidden');
+
 if (minuteInput.value === '' ||
      secondInput.value === '' ||
      taskInput.value === '') {
@@ -169,8 +177,10 @@ function makeStartEnabled() {
 };
 
 function revealTimer() {
+  timerButton.innerHTML = "START";
   timerContainer.classList.add('hidden');
   newTimer.classList.remove('hidden');
+  document.querySelector('.input-div').classList.remove('hidden');
   document.querySelector('.current-activity-text').innerHTML = taskInput.value;
   document.querySelector('.minute-digits').innerHTML = minuteInput.value;
   document.querySelector('.second-digits').innerHTML = secondInput.value;
@@ -211,8 +221,6 @@ function makeCard(newActivity) {
   </div>`)
 };
 
-document.querySelector('.new-activity-button').addEventListener('click', backToMain)
-
 function backToMain() {
   timerContainer.classList.remove('hidden');
   document.querySelector('.new-activity-button-div').classList.add('hidden');
@@ -221,7 +229,6 @@ function backToMain() {
 
 
 function favoriteButton(event) {
-
   var cardId = event.target.closest('.past-activity').id;
   var favButton = document.querySelector('favorite-card')
   var instance = activityLog.find(function(task){
@@ -263,30 +270,3 @@ function addRedo(event) {
     secondInput.value = instance.seconds;
   }
 }
-
-
-
-// use the above to find the instance
-// find the input elements using querySelector's or globally
-// assign the value of those elements to the instance property values
-// instance.category instance.minutes
-// this input element = instance.minutes
-//change them in the form look that up, might run into it not wanting to edit it.
-//once its edited, reassign those properties on the instance to those new input values
-//
-
-
-//
-// function redoCard(event) {
-//   var cardId = event.target.closest('.past-activity').id;
-//   var redoButton = document.querySelector('redo-card')
-//   var instance = activityLog.find(function(task){
-//     return Number(task.id) === Number(cardId);
-//   })
-//   instance.changeRedo();
-// }
-//
-//
-// //
-//   function changeRedo(event) {
-//   if (!event.target.classList.contains('my-selector-class')
