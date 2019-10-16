@@ -224,7 +224,8 @@ function makeCard(newActivity) {
 function backToMain() {
   timerContainer.classList.remove('hidden');
   document.querySelector('.new-activity-button-div').classList.add('hidden');
-  enableRedoButton()
+  enableRedoButton();
+  clearForm();
 };
 
 
@@ -269,4 +270,13 @@ function addRedo(event) {
     minuteInput.value = instance.minutes;
     secondInput.value = instance.seconds;
   }
+}
+
+function clearForm() {
+  taskInput.value = "";
+  minuteInput.value = "";
+  secondInput.value = "";
+  exerciseButton.classList.remove('exerciseClass');
+  meditateButton.classList.remove('meditateClass');
+  studyButton.classList.remove('studyClass');
 }
