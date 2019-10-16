@@ -163,8 +163,7 @@ if (minuteInput.value === '' ||
 if (minuteInput.value !== '' &&
     secondInput.value !== '' &&
     taskInput.value !== '') {
-    revealTimer()
-    disableRedoButton()
+      beginActivity();
   }
 }
 
@@ -213,10 +212,6 @@ function makeCard(newActivity) {
   <div class="div-soup">
   <button class="redo-card" disabled=true type="button" onclick= "addRedo(event)">REDO</button>
   <button class="favorite-card" type="button" onclick= "favoriteButton(event)"></button>
-  </div>
-  <button class="accordion"></button>
-  <div class="panel">
-  <p>${newActivity.message}</p>
   </div>
   </div>`)
 };
@@ -269,6 +264,7 @@ function addRedo(event) {
     taskInput.value = instance.intention;
     minuteInput.value = instance.minutes;
     secondInput.value = instance.seconds;
+    redoButtonColor();
   }
 }
 
@@ -279,4 +275,17 @@ function clearForm() {
   exerciseButton.classList.remove('exerciseClass');
   meditateButton.classList.remove('meditateClass');
   studyButton.classList.remove('studyClass');
+}
+
+function beginActivity() {
+  if(meditateButton.classList.contains('meditateClass') ||
+  studyButton.classList.contains('studyClass') ||
+  exerciseButton.classList.contains('exerciseButton')) {
+    revealTimer()
+    disableRedoButton()
+  }
+}
+
+function redoButtonColor() {
+  
 }
