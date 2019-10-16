@@ -1,6 +1,6 @@
 class Activity {
   constructor(category, minutes, seconds, intention, message, favorite, redo) {
-    this.category = chosenActivity;
+    this.category = category;
     this.minutes = minutes;
     this.seconds = seconds;
     this.intention = intention;
