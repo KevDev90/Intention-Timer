@@ -564,6 +564,10 @@ input {
     visibility: hidden;
   }
 
+  .log-button {
+    border: magenta 1px solid;
+  }
+
 
 
 }
@@ -732,4 +736,5 @@ input {
   .hidden {
     display: none;
   }
+
 }

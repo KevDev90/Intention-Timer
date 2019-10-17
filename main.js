@@ -22,11 +22,6 @@ var currentTime = new Date().getTime();
 var remainingTime = endTime - currentTime;
 var mins = Math.floor((remainingTime/1000)/60);
 var secs = Math.floor(remainingTime/1000);
-var acc = document.getElementsByClassName("accordion");
-var userMessage = document.querySelector('.user-message');
-var i;
-
-
 
 minuteInput.addEventListener("keydown", function(e) {
   if (invalidChar.includes(e.key)) {
@@ -40,7 +35,9 @@ secondInput.addEventListener("keydown", function(e) {
   }
 });
 
-studyButton.addEventListener('click', function(){
+studyButton.addEventListener('click', activateStudy);
+
+function activateStudy() {
   studyButton.classList.add('studyClass');
   studyButton.classList.add('Class');
   exerciseButton.classList.remove('Class');
@@ -51,9 +48,11 @@ studyButton.addEventListener('click', function(){
   exerciseButton.classList.remove('exerciseClass');
   meditateButton.classList.remove('meditateClass');
   chosenActivity = "Study";
-});
+}
 
-meditateButton.addEventListener('click', function(){
+meditateButton.addEventListener('click', activateMeditation);
+
+function activateMeditation() {
   meditateButton.classList.add('Class');
   studyButton.classList.remove('Class');
   exerciseButton.classList.remove('Class');
@@ -64,10 +63,11 @@ meditateButton.addEventListener('click', function(){
   studyButton.classList.remove('studyClass');
   exerciseButton.classList.remove('exerciseClass');
   chosenActivity = "Meditate";
+}
 
-});
+exerciseButton.addEventListener('click', activateExercise);
 
-exerciseButton.addEventListener('click', function(){
+function activateExercise() {
   exerciseButton.classList.add('exerciseClass');
   exerciseButton.classList.add('Class');
   studyButton.classList.remove('Class');
@@ -78,12 +78,9 @@ exerciseButton.addEventListener('click', function(){
   studyButton.classList.remove('studyClass');
   meditateButton.classList.remove('meditateClass');
   chosenActivity = "Exercise";
-
-});
+}
 
 startButton.addEventListener('click', updateErrors);
-
-
 
 minuteInput.addEventListener('keyup', function(){
 if (minuteInput.value !== '') {
@@ -103,7 +100,7 @@ if (taskInput.value !== '') {
   }
 })
 
-document.querySelector('.right-section').addEventListener('click', addRedo);
+// document.querySelector('.right-section').addEventListener('click', addRedo);
 
 document.querySelector('.new-activity-button').addEventListener('click', backToMain)
 
@@ -119,9 +116,8 @@ function beginTimer() {
   checkTheTime(domSecText, domMinText);
 }
 
-var t;
+
 function checkTheTime(sec, min) {
-  clearTimeout(t);
   if (sec < 1 && min >0) {
     min --;
     sec += 59;
@@ -146,10 +142,8 @@ function checkTheTime(sec, min) {
       domSec.innerText = sec;
     }
   }
-  var t = window.setTimeout(checkTheTime, 1000, sec, min);
-
-  }
-
+   window.setTimeout(checkTheTime, 1000, sec, min);
+}
 
 function updateErrors() {
   document.querySelector('.motivate').classList.add('hidden');
@@ -186,7 +180,8 @@ function revealTimer() {
 };
 
 function createInstance() {
-  var pastActivity = new Activity(chosenActivity.value, minuteInput.value, secondInput.value, taskInput.value, userMessage.value);
+  event.target.closest
+  var pastActivity = new Activity(chosenActivity.value, minuteInput.value, secondInput.value, taskInput.value,  userMessage.value);
   activityLog.push(pastActivity);
   return pastActivity;
 };
@@ -223,7 +218,6 @@ function backToMain() {
   clearForm();
 };
 
-
 function favoriteButton(event) {
   var cardId = event.target.closest('.past-activity').id;
   var favButton = document.querySelector('favorite-card')
@@ -254,7 +248,6 @@ function disableRedoButton() {
   }
 }
 
-
 function addRedo(event) {
   if(event.target.classList.contains('redo-card')){
   var cardId = event.target.closest('.past-activity').id;
@@ -264,7 +257,7 @@ function addRedo(event) {
     taskInput.value = instance.intention;
     minuteInput.value = instance.minutes;
     secondInput.value = instance.seconds;
-    redoButtonColor();
+    redoButtonColor(instance);
   }
 }
 
@@ -286,6 +279,17 @@ function beginActivity() {
   }
 }
 
-function redoButtonColor() {
+function redoButtonColor(instance) {
+  console.log(instance.category);
+  switch(instance.category) {
+    case 'Study': console.log('studybreak');
+      activateStudy();
+      break;
+    case 'Meditate': activateMeditation();
+      break;
+    case 'Exercise': activateExercise();
+      break;
+    default: alert('Color not defined');
+  }
 
 }
