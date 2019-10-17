@@ -100,8 +100,6 @@ if (taskInput.value !== '') {
   }
 })
 
-// document.querySelector('.right-section').addEventListener('click', addRedo);
-
 document.querySelector('.new-activity-button').addEventListener('click', backToMain)
 
 timerButton.addEventListener('click', beginTimer);
@@ -115,7 +113,6 @@ function beginTimer() {
   var domSecText = Number(domSec.innerText);
   checkTheTime(domSecText, domMinText);
 }
-
 
 function checkTheTime(sec, min) {
   if (sec < 1 && min >0) {
@@ -181,7 +178,7 @@ function revealTimer() {
 
 function createInstance() {
   event.target.closest
-  var pastActivity = new Activity(chosenActivity.value, minuteInput.value, secondInput.value, taskInput.value,  userMessage.value);
+  var pastActivity = new Activity(chosenActivity.value, minuteInput.value, secondInput.value, taskInput.value);
   activityLog.push(pastActivity);
   return pastActivity;
 };
@@ -193,7 +190,7 @@ function addPastActivity() {
   document.querySelector('.second-prompt').classList.add('hidden');
   newTimer.classList.add('hidden');
   document.querySelector('.new-activity-button-div').classList.remove('hidden');
-  logButton.classList.add('invisible'); 
+  logButton.classList.add('invisible');
 };
 
 function makeCard(newActivity) {
@@ -280,9 +277,8 @@ function beginActivity() {
 }
 
 function redoButtonColor(instance) {
-  console.log(instance.category);
   switch(instance.category) {
-    case 'Study': console.log('studybreak');
+    case 'Study':
       activateStudy();
       break;
     case 'Meditate': activateMeditation();
@@ -291,5 +287,4 @@ function redoButtonColor(instance) {
       break;
     default: alert('Color not defined');
   }
-
 }
