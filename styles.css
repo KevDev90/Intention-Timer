@@ -274,6 +274,7 @@ font-size: 18px;
   font-size: 16px;
   color: #46424D;
   margin-bottom: 50px;
+  background-color: #FFF;
 }
 
 .new-activity-button-div {
@@ -343,7 +344,7 @@ input {
 
 .past-activity {
   width: 90%;
-  height: 130px;
+  height: 120px;
   border-radius: 5px;
   margin-bottom: 10px;
   padding: 10px;
@@ -492,7 +493,6 @@ input {
     background-size: 35px;
     font-size: 35%;
     padding-bottom: 10px;
-    border: 1px solid #FFF;
     border-radius: 3px;
     margin-bottom: 15px;
     padding-left: 60px;
@@ -643,14 +643,13 @@ input {
       text-align: left;
     }
 
-    .hidden {
-      display: none;
-    }
-
     .invisible {
       visibility: hidden;
     }
 
+    .hidden {
+      display: none;
+    }
 }
 
 @media only screen and (max-width: 1250px) {
@@ -726,12 +725,11 @@ input {
     padding-top: 1%;
   }
 
-  .hidden {
-    display: none;
-  }
-
   .invisible {
     visibility: hidden;
   }
 
+  .hidden {
+    display: none;
+  }
 }

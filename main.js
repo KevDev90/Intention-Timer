@@ -41,11 +41,11 @@ secondInput.addEventListener("keydown", function(e) {
 });
 
 studyButton.addEventListener('click', function(){
-  studyButton.classList.toggle('studyClass');
-  studyButton.classList.toggle('Class');
+  studyButton.classList.add('studyClass');
+  studyButton.classList.add('Class');
   exerciseButton.classList.remove('Class');
   meditateButton.classList.remove('Class');
-  timerButton.classList.toggle('study-timer-border');
+  timerButton.classList.add('study-timer-border');
   timerButton.classList.remove('meditate-timer-border');
   timerButton.classList.remove('exercise-timer-border');
   exerciseButton.classList.remove('exerciseClass');
@@ -54,11 +54,11 @@ studyButton.addEventListener('click', function(){
 });
 
 meditateButton.addEventListener('click', function(){
-  meditateButton.classList.toggle('Class');
+  meditateButton.classList.add('Class');
   studyButton.classList.remove('Class');
   exerciseButton.classList.remove('Class');
-  meditateButton.classList.toggle('meditateClass');
-  timerButton.classList.toggle('meditate-timer-border');
+  meditateButton.classList.add('meditateClass');
+  timerButton.classList.add('meditate-timer-border');
   timerButton.classList.remove('study-timer-border');
   timerButton.classList.remove('exercise-timer-border');
   studyButton.classList.remove('studyClass');
@@ -68,11 +68,11 @@ meditateButton.addEventListener('click', function(){
 });
 
 exerciseButton.addEventListener('click', function(){
-  exerciseButton.classList.toggle('exerciseClass');
-  exerciseButton.classList.toggle('Class');
+  exerciseButton.classList.add('exerciseClass');
+  exerciseButton.classList.add('Class');
   studyButton.classList.remove('Class');
   meditateButton.classList.remove('Class');
-  timerButton.classList.toggle('exercise-timer-border');
+  timerButton.classList.add('exercise-timer-border');
   timerButton.classList.remove('study-timer-border');
   timerButton.classList.remove('meditate-timer-border');
   studyButton.classList.remove('studyClass');
@@ -198,7 +198,7 @@ function addPastActivity() {
   document.querySelector('.second-prompt').classList.add('hidden');
   newTimer.classList.add('hidden');
   document.querySelector('.new-activity-button-div').classList.remove('hidden');
-
+  logButton.classList.add('invisible'); 
 };
 
 function makeCard(newActivity) {
@@ -280,12 +280,12 @@ function clearForm() {
 function beginActivity() {
   if(meditateButton.classList.contains('meditateClass') ||
   studyButton.classList.contains('studyClass') ||
-  exerciseButton.classList.contains('exerciseButton')) {
+  exerciseButton.classList.contains('exerciseClass')) {
     revealTimer()
     disableRedoButton()
   }
 }
 
 function redoButtonColor() {
-  
+
 }
